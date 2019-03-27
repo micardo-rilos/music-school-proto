@@ -1,6 +1,7 @@
 package pl.edu.pwr.musicschool.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "student")
@@ -17,12 +18,20 @@ public class Student {
     @Column(name = "student_surname")
     private String studentSurname;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "student_class",
+            inverseJoinColumns = { @JoinColumn(name = "class_id") },
+            joinColumns = { @JoinColumn(name = "student_id") }
+    )
+    private List<Class> classes;
+
     public Student() {}
 
-    public Student(int studentId, String studentName, String studentSurname) {
-        this.studentId = studentId;
+    public Student(String studentName, String studentSurname, List<Class> classes) {
         this.studentName = studentName;
         this.studentSurname = studentSurname;
+        this.classes = classes;
     }
 
     public int getStudentId() {
@@ -47,5 +56,13 @@ public class Student {
 
     public void setStudentSurname(String studentSurname) {
         this.studentSurname = studentSurname;
+    }
+
+    public List<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<Class> classes) {
+        this.classes = classes;
     }
 }

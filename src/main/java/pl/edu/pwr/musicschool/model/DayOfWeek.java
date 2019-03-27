@@ -2,11 +2,11 @@ package pl.edu.pwr.musicschool.model;
 
 public enum DayOfWeek {
 
-    MONDAY("Poniedziałek"),
+    MONDAY("Poniedzialek"),
     TUESDAY("Wtorek"),
-    WEDNESDAY("Środa"),
+    WEDNESDAY("Sroda"),
     THURSDAY("Czwartek"),
-    FRIDAY("Piątek"),
+    FRIDAY("Piatek"),
     SATURDAY("Sobota"),
     SUNDAY("Niedziela");
 

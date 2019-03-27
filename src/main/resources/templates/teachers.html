@@ -9,6 +9,13 @@
 <ol>
     <li th:each="teacher : ${teachers}">
         <p th:text="|${teacher.teacherName} ${teacher.teacherSurname}"></p>
+        <p>Zajecia prowadzone przez nauczyciela:</p>
+        <ul>
+            <li th:each="class : ${teacher.classes}">
+                <p th:text="|Przedmiot: ${class.subject.subjectName}|"></p>
+                <p th:text="|Termin zajec: ${class.dayOfWeek} ${#temporals.format(class.beginOfClass, 'HH:mm')} ${#temporals.format(class.endOfClass, 'HH:mm')}|"></p>
+            </li>
+        </ul>
     </li>
 </ol>
 <a th:href="@{/}">Powrot</a>

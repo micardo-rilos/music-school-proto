@@ -9,6 +9,14 @@
 <ol>
     <li th:each="student : ${students}">
         <p th:text="|${student.studentName} ${student.studentSurname}"></p>
+        <p>Zajecia w ktoych uczen bierze udzial:</p>
+        <ul>
+            <li th:each="class : ${student.classes}">
+                <p th:text="|Przedmiot: ${class.subject.subjectName}|"></p>
+                <p th:text="|Nauczyciel: ${class.teacher.teacherName} ${class.teacher.teacherSurname}|"></p>
+                <p th:text="|Termin zajec: ${class.dayOfWeek} ${#temporals.format(class.beginOfClass, 'HH:mm')} ${#temporals.format(class.endOfClass, 'HH:mm')}|"></p>
+            </li>
+        </ul>
     </li>
 </ol>
 <a th:href="@{/}">Powrot</a>

@@ -1,6 +1,7 @@
 package pl.edu.pwr.musicschool.model;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "teacher")
@@ -17,12 +18,15 @@ public class Teacher {
     @Column(name = "teacher_surname")
     private String teacherSurname;
 
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Class> classes;
+
     public Teacher() {}
 
-    public Teacher(int teacherId, String teacherName, String teacherSurname) {
-        this.teacherId = teacherId;
+    public Teacher(String teacherName, String teacherSurname, List<Class> classes) {
         this.teacherName = teacherName;
         this.teacherSurname = teacherSurname;
+        this.classes = classes;
     }
 
     public int getTeacherId() {
@@ -47,5 +51,13 @@ public class Teacher {
 
     public void setTeacherSurname(String teacherSurname) {
         this.teacherSurname = teacherSurname;
+    }
+
+    public List<Class> getClasses() {
+        return classes;
+    }
+
+    public void setClasses(List<Class> classes) {
+        this.classes = classes;
     }
 }

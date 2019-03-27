@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista przedmiotow</title>
+</head>
+<body>
+<h1>Lista przedmiotow</h1>
+<ol>
+    <li th:each="subject : ${subjects}">
+        <p th:text="${subject.subjectName}"></p>
+    </li>
+</ol>
+<a th:href="@{/}">Powrot</a>
+</body>
+</html>

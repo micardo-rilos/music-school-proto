@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista nauczycieli</title>
+</head>
+<body>
+<h1>Lista nauczycieli</h1>
+<ol>
+    <li th:each="teacher : ${teachers}">
+        <p th:text="|${teacher.teacherName} ${teacher.teacherSurname}"></p>
+    </li>
+</ol>
+<a th:href="@{/}">Powrot</a>
+</body>
+</html>

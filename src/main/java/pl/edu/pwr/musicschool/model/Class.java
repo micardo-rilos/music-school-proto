@@ -27,7 +27,7 @@ public class Class {
             joinColumns = { @JoinColumn(name = "class_id") },
             inverseJoinColumns = { @JoinColumn(name = "student_id") }
     )
-    private List<Student> studentsOfClass;
+    private List<Student> students;
 
     @Column(name = "begin_of_class")
     private LocalTime beginOfClass;
@@ -41,11 +41,11 @@ public class Class {
 
     public Class() {}
 
-    public Class(Subject subject, Teacher teacher, List<Student> studentsOfClass, LocalTime beginOfClass,
+    public Class(Subject subject, Teacher teacher, List<Student> students, LocalTime beginOfClass,
                  LocalTime endOfClass, DayOfWeek dayOfWeek) {
         this.subject = subject;
         this.teacher = teacher;
-        this.studentsOfClass = studentsOfClass;
+        this.students = students;
         this.beginOfClass = beginOfClass;
         this.endOfClass = endOfClass;
         this.dayOfWeek = dayOfWeek;
@@ -75,12 +75,12 @@ public class Class {
         this.teacher = teacher;
     }
 
-    public List<Student> getStudentsOfClass() {
-        return studentsOfClass;
+    public List<Student> getStudents() {
+        return students;
     }
 
-    public void setStudentsOfClass(List<Student> studentsOfClass) {
-        this.studentsOfClass = studentsOfClass;
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public LocalTime getBeginOfClass() {

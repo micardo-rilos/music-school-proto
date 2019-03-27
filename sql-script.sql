@@ -11,27 +11,27 @@ drop table if exists student;
 
 create table if not exists teacher
 (
-	teacher_id int primary key,
+	teacher_id int primary key auto_increment,
     teacher_name varchar(255) not null,
     teacher_surname varchar(255) not null
 );
 
 create table if not exists student
 (
-	student_id int primary key,
+	student_id int primary key auto_increment,
     student_name varchar(255) not null,
     student_surname varchar(255) not null
 );
 
 create table if not exists school_subject
 (
-	subject_id int primary key,
+	subject_id int primary key auto_increment,
     subject_name varchar(255) not null
 );
 
 create table if not exists class
 (
-	class_id int primary key,
+	class_id int primary key auto_increment,
     subject_id int not null,
     teacher_id int not null,
     day_of_week int check(day_of_week >= 1 and day_of_week <= 7),

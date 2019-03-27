@@ -34,7 +34,7 @@ create table if not exists class
 	class_id int primary key auto_increment,
     subject_id int not null,
     teacher_id int not null,
-    day_of_week int check(day_of_week >= 1 and day_of_week <= 7),
+    day_of_week int check(day_of_week >= 0 and day_of_week <= 6),
     begin_of_class time not null,
     end_of_class time not null,
     

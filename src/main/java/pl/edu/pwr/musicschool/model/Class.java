@@ -29,26 +29,24 @@ public class Class {
     )
     private List<Student> students;
 
-    @Column(name = "begin_of_class")
-    private LocalTime beginOfClass;
-
-    @Column(name = "end_of_class")
-    private LocalTime endOfClass;
-
-    @Enumerated(EnumType.ORDINAL)
-    @Column(name = "day_of_week")
-    private DayOfWeek dayOfWeek;
+    @OneToMany(mappedBy = "aClass", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Lesson> lessons;
 
     public Class() {}
 
-    public Class(Subject subject, Teacher teacher, List<Student> students, LocalTime beginOfClass,
-                 LocalTime endOfClass, DayOfWeek dayOfWeek) {
+    public Class(Subject subject, Teacher teacher, List<Student> students, List<Lesson> lessons) {
         this.subject = subject;
         this.teacher = teacher;
         this.students = students;
-        this.beginOfClass = beginOfClass;
-        this.endOfClass = endOfClass;
-        this.dayOfWeek = dayOfWeek;
+        this.lessons = lessons;
+    }
+
+    public List<Lesson> getLessons() {
+        return lessons;
+    }
+
+    public void setLessons(List<Lesson> lessons) {
+        this.lessons = lessons;
     }
 
     public int getClassId() {
@@ -81,29 +79,5 @@ public class Class {
 
     public void setStudents(List<Student> students) {
         this.students = students;
-    }
-
-    public LocalTime getBeginOfClass() {
-        return beginOfClass;
-    }
-
-    public void setBeginOfClass(LocalTime beginOfClass) {
-        this.beginOfClass = beginOfClass;
-    }
-
-    public LocalTime getEndOfClass() {
-        return endOfClass;
-    }
-
-    public void setEndOfClass(LocalTime endOfClass) {
-        this.endOfClass = endOfClass;
-    }
-
-    public DayOfWeek getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public void setDayOfWeek(DayOfWeek dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
     }
 }

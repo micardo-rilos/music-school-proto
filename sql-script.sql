@@ -3,6 +3,7 @@ create database if not exists music_school;
 use music_school;
 
 drop table if exists student_class;
+drop table if exists lesson;
 drop table if exists class;
 drop table if exists student;
 drop table if exists teacher;
@@ -34,12 +35,21 @@ create table if not exists class
 	class_id int primary key auto_increment,
     subject_id int not null,
     teacher_id int not null,
-    day_of_week int check(day_of_week >= 0 and day_of_week <= 6),
-    begin_of_class time not null,
-    end_of_class time not null,
     
     foreign key class_subject_id_fk(subject_id) references school_subject(subject_id),
     foreign key class_teacher_id_fk(teacher_id)references teacher(teacher_id)
+);
+
+
+create table if not exists lesson
+(
+  lesson_id int primary key auto_increment,
+  begin_of_class time not null,
+  end_of_class time not null,
+  day_of_week int check(day_of_week <= 6 and day_of_week >=0),
+  class_id int not null,
+
+  foreign key lesson_class_id_fk(class_id)references class(class_id)
 );
 
 create table if not exists student_class

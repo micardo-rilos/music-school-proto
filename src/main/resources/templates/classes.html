@@ -11,7 +11,12 @@
         <div>
             <p th:text="|Nazwa zajec: ${class.subject.subjectName}"|></p>
             <p th:text="|Nauczyciel: ${class.teacher.teacherName} ${class.teacher.teacherSurname}|"></p>
-            <p th:text="|Termin zajec: ${class.dayOfWeek} ${#temporals.format(class.beginOfClass, 'HH:mm')} ${#temporals.format(class.endOfClass, 'HH:mm')}|"></p>
+            <p>Terminy zajec:</p>
+            <ul>
+                <li th:each="lesson : ${class.lessons}">
+                    <p th:text="|${lesson.dayOfWeek} ${#temporals.format(lesson.beginOfClass, 'HH:mm')} – ${#temporals.format(lesson.endOfClass, 'HH:mm')}|"></p>
+                </li>
+            </ul>
             <p>Lista uczniow:</p>
             <ul>
                 <li th:each="student : ${class.students}">

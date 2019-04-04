@@ -13,7 +13,19 @@
         <ul>
             <li th:each="class : ${teacher.classes}">
                 <p th:text="|Przedmiot: ${class.subject.subjectName}|"></p>
-                <p th:text="|Termin zajec: ${class.dayOfWeek} ${#temporals.format(class.beginOfClass, 'HH:mm')} ${#temporals.format(class.endOfClass, 'HH:mm')}|"></p>
+                <p>Terminy zajec:</p>
+                <ul>
+                    <li th:each="lesson : ${class.lessons}">
+                        <p th:text="|${lesson.dayOfWeek} ${#temporals.format(lesson.beginOfClass, 'HH:mm')} – ${#temporals.format(lesson.endOfClass, 'HH:mm')}|"></p>
+                    </li>
+                </ul>
+                <p>Lista uczniow:</p>
+                <ul>
+                    <li th:each="student : ${class.students}">
+                        <p th:text="|${student.studentName} ${student.studentSurname}|"></p>
+                    </li>
+                </ul>
+
             </li>
         </ul>
     </li>
